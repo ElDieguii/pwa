@@ -317,10 +317,10 @@ function getPublicKey() {
 // getPublicKey().then( console.log );
 btnDesactivadas.on( 'click', function() {
 
+
     if ( !swReg ) return console.log('No hay registro de SW');
 
     getPublicKey().then( function( key ) {
-
         swReg.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: key
@@ -328,7 +328,7 @@ btnDesactivadas.on( 'click', function() {
         .then( res => res.toJSON() )
         .then( suscripcion => {
 
-            // console.log(suscripcion);
+            console.log(suscripcion);
             fetch('https://curso-pwa-server.herokuapp.com/api/subscribe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -338,7 +338,7 @@ btnDesactivadas.on( 'click', function() {
             .catch( cancelarSuscripcion );
 
 
-        });
+        }).catch(err=>console.log(err));
 
 
     });

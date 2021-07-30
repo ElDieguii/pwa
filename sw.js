@@ -158,29 +158,8 @@ self.addEventListener('notificationclick', e => {
 
 
     console.log({ notificacion, accion });
-    // console.log(notificacion);
-    // console.log(accion);
-    
 
-    const respuesta = clients.matchAll()
-    .then( clientes => {
-
-        let cliente = clientes.find( c => {
-            return c.visibilityState === 'visible';
-        });
-
-        if ( cliente !== undefined ) {
-            cliente.navigate( notificacion.data.url );
-            cliente.focus();
-        } else {
-            clients.openWindow( notificacion.data.url );
-        }
-
-        return notificacion.close();
-
-    });
-
-    e.waitUntil( respuesta );
-
+    clients.openWindow( notificacion.data.url );
+    notificacion.close();
 
 });
