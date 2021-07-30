@@ -120,7 +120,7 @@ self.addEventListener('push', e => {
         openUrl: '/',
         data: {
             // url: 'https://google.com',
-            url: '/',
+            url: 'https://e-commerce.devthion.com/',
             id: data.user
         },
         actions: [
