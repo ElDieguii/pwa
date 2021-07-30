@@ -31,7 +31,7 @@ function postearMensajes() {
 
             const doc = row.doc;
 
-            const fetchPom =  fetch('api', {
+            const fetchPom =  fetch('https://curso-pwa-server.herokuapp.com/api', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

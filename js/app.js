@@ -1,6 +1,6 @@
 
 var url = window.location.href;
-var swLocation = '/twittor/sw.js';
+var swLocation = '/pwa/sw.js';
 
 var swReg;
 
@@ -161,7 +161,7 @@ postBtn.on('click', function() {
     };
 
 
-    fetch('api', {
+    fetch('https://curso-pwa-server.herokuapp.com/api', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -183,7 +183,7 @@ postBtn.on('click', function() {
 // Obtener mensajes del servidor
 function getMensajes() {
 
-    fetch('api')
+    fetch('https://curso-pwa-server.herokuapp.com/api')
         .then( res => res.json() )
         .then( posts => {
 
@@ -306,7 +306,7 @@ function getPublicKey() {
     //     .then( res => res.text())
     //     .then( console.log );
 
-    return fetch('api/key')
+    return fetch('https://curso-pwa-server.herokuapp.com/api/key')
         .then( res => res.arrayBuffer())
         // returnar arreglo, pero como un Uint8array
         .then( key => new Uint8Array(key) );
@@ -329,7 +329,7 @@ btnDesactivadas.on( 'click', function() {
         .then( suscripcion => {
 
             // console.log(suscripcion);
-            fetch('api/subscribe', {
+            fetch('https://curso-pwa-server.herokuapp.com/api/subscribe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify( suscripcion )
